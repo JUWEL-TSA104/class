@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webinar Invite Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      /* Smooth transitions for inputs */
+      input:focus { outline: none; border-color: #9333ea; box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2); }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 min-h-screen text-gray-800 p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-2">
+                Webinar Invite Generator
+            </h1>
+            <p class="text-gray-600">Enter details below to generate your invitation message</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Left Column: Input Form -->
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/50 h-fit">
+                <div class="flex items-center gap-2 mb-6 border-b border-gray-200 pb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                    <h2 class="text-xl font-bold text-gray-800">Edit Details</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Topic -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-semibold text-gray-700">Topic</label>
+                        <input type="text" id="topic" class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 transition-all" value="WHY NOT FOREVER LIVINIG PRODUCTS?">
+                    </div>
+
+                    <!-- Host & Speaker -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-gray-700">Host Name</label>
+                            <input type="text" id="hostName" class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 transition-all" value="Ms.Sumaiya akter prema">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-gray-700">Speaker Name</label>
+                            <input type="text" id="speakerName" class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 transition-all" value="Mr. AUYON JAHIR">
+                        </div>
+                    </div>
+
+                    <!-- Speaker Title -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-semibold text-gray-700">Speaker Title</label>
+                        <input type="text" id="speakerTitle" class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 transition-all" value="Chairman, The Dreamers Academy">
+                    </div>
+
+                    <!-- Link -->
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-semibold text-gray-700">Webinar Link</label>
+                        <input type="text" id="link" class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 transition-all" value="https://youtu.be/TC_IA3Jc2OU">
+                    </div>
+
+                    <!-- Date & Time -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-gray-700">Date</label>
+                            <input type="text" id="date" class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 transition-all" value="26th May, 2023">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-gray-700">Time</label>
+                            <input type="text" id="time" class="w-full px-4 py-2 rounded-lg border border-gray-300 bg-gray-50 transition-all" value="9PM">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Preview -->
+            <div class="flex flex-col h-full shadow-2xl rounded-2xl overflow-hidden">
+                <div class="bg-gradient-to-r from-gray-900 to-gray-800 text-white p-4 flex justify-between items-center">
+                    <h2 class="font-bold flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        Preview
+                    </h2>
+                    <span class="text-xs bg-gray-700 px-2 py-1 rounded text-gray-300">Auto-updates</span>
+                </div>
+
+                <div class="flex-1 bg-gray-100 flex flex-col border-x border-b border-gray-300 rounded-b-2xl">
+                    <!-- Text Preview Area -->
+                    <textarea 
+                        id="previewArea" 
+                        class="flex-1 p-6 m-4 text-sm leading-relaxed text-gray-900 bg-white rounded-lg border border-gray-200 shadow-inner resize-none focus:ring-2 focus:ring-purple-500 outline-none font-mono"
+                        spellcheck="false"
+                    ></textarea>
+
+                    <!-- Copy Button -->
+                    <div class="p-4 bg-white border-t border-gray-200 z-10">
+                        <button id="copyBtn" class="w-full py-4 px-6 rounded-xl font-bold text-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg flex items-center justify-center gap-3 active:scale-95">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                            </svg>
+                            <span id="btnText">Copy Text</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to handle logic -->
+    <script>
+        const inputs = ['topic', 'hostName', 'speakerName', 'speakerTitle', 'link', 'date', 'time'];
+        const previewArea = document.getElementById('previewArea');
+        const copyBtn = document.getElementById('copyBtn');
+        const btnText = document.getElementById('btnText');
+
+        // Function to generate the template string
+        function generateTemplate() {
+            const data = {};
+            inputs.forEach(id => {
+                data[id] = document.getElementById(id).value;
+            });
+
+            return `✅PERSONAL GUIDELINE✨
+
+🎯Get Ready To Become a Business Owner🎀
+
+🎯🎯Topic:   🌠${data.topic}
+
+‼️Congratulations‼️
+You're Selected To Attend This 
+Webinar❤️‍🔥❤️‍🔥❤️‍🔥
+
+                Host🥀
+🎤${data.hostName}
+
+          Speaker🥀
+🎤${data.speakerName}
+     ${data.speakerTitle}
+
+🗣️We are inviting you to a schedule YouTube premier ‼️
+
+📲Join Youtube premier👇
+
+${data.link}
+
+     Date: "${data.date}"
+  ⏰⏰⏰SHARP AT ${data.time}‼️
+
+Participate On Time Everyone & Don't Miss This Opportunity💯`;
+        }
+
+        // Update preview when any input changes
+        function updatePreview() {
+            previewArea.value = generateTemplate();
+        }
+
+        // Add event listeners to all inputs
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', updatePreview);
+        });
+
+        // Copy functionality
+        copyBtn.addEventListener('click', async () => {
+            try {
+                // Copy from the textarea directly (allows user to edit before copying if they want)
+                previewArea.select();
+                document.execCommand('copy'); 
+                // Alternatively use clipboard API: await navigator.clipboard.writeText(previewArea.value);
+                
+                // Visual Feedback
+                const originalText = btnText.innerText;
+                const originalClass = copyBtn.className;
+                
+                copyBtn.className = "w-full py-4 px-6 rounded-xl font-bold text-lg bg-green-500 text-white hover:bg-green-600 transition-all duration-300 shadow-lg flex items-center justify-center gap-3 scale-95";
+                btnText.innerText = "Copied to Clipboard!";
+                
+                setTimeout(() => {
+                    btnText.innerText = originalText;
+                    copyBtn.className = originalClass;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy', err);
+                alert('Failed to copy text. Please select manually.');
+            }
+        });
+
+        // Initialize preview on load
+        updatePreview();
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
